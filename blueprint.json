@@ -1,1 +1,189 @@
-{"software":{"name":"app_library","major":null,"minor":1,"release_level":"Alpha","patch":0,"license_name":"apache_v2","license_label":"Apache v2","license_sourceurl":"http://www.apache.org/licenses/LICENSE-2.0.html","full_title":"Application Library","short_title":"app_library","description":"","icon_url":"","home_page_url":"","support_page_url":"","about":"","language":"ruby","framework":"rails5","deployment_type":"web","web_root_directory":"","first_run_url":"","publisher":"engines","blocking_worker_name":null,"required_memory":256,"recommended_memory":384,"http_protocol":"http_and_https","framework_port_overide":null,"custom_start_script":"#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  \u003e/dev/null","custom_install_script":"","custom_post_install_script":"","service_configurations":[{"publisher_namespace":"EnginesSystem","type_path":"database/sql/mysql","variables":{"full_access":"false","name":"_Engines_Builder(engine_name)","database_host":"_Engines_System(mysql_host)","collation":"utf8_general_ci","db_flavor":"mysql2","db_password":"_Engines_System(random(10))","db_username":"_Engines_Builder(engine_name)","database_name":"_Engines_Builder(engine_name)","rails_flavor":"mysql2"}},{"publisher_namespace":"EnginesSystem","type_path":"filesystem/local/filesystem","variables":{"user":"_Engines_Builder(data_uid)","group":"_Engines_Builder(data_gid)","service_name":"_Engines_Builder(engine_name)","volume_src":"","engine_path":"persistent","permissions":"rw"}}],"persistent_directories":[{"path":"app/public/system"}],"replacement_strings":[],"persistent_files":[],"installed_packages":[{"name":"app_library","source_url":"https://github.com/lachdoug/app_library","destination":"./","extraction_command":"git","path_to_extracted":"app_library"}],"system_packages":[],"workers":[],"ports":[],"external_repositories":[],"rake_tasks":[{"action":"db:migrate","created_at":"2016-09-19T02:39:04.000Z","updated_at":"2016-09-20T03:17:10.000Z","always_run":true},{"action":"db:seed","created_at":"2016-09-19T02:39:11.000Z","updated_at":"2016-09-20T03:17:26.000Z","always_run":false},{"action":"assets:precompile","created_at":"2016-09-19T02:39:16.000Z","updated_at":"2016-09-20T03:17:56.000Z","always_run":true}],"template_files":[],"file_write_permissions":[{"path":"./","recursive":true}],"custom_php_inis":[],"apache_htaccess_files":[],"apache_httpd_configurations":[],"modules":[],"variables":[],"component_sources":[],"component_path":"","extract_components":false,"installation_report_template":"","continuous_deployment":false,"database_seed_file":"","actionators":{}}}
+{
+  "schema": {
+    "type": "app_blueprint",
+    "version": {
+      "major": 1,
+      "minor": 0
+    },
+    "origin": "Engines Developer Studio 0.2"
+  },
+  "metadata": {
+    "blueprint": {
+      "version": {
+        "major": 0,
+        "minor": 1,
+        "level": "alpha",
+        "patch": 0
+      },
+      "timestamp": null
+    },
+    "software": {
+      "display": {
+        "title": "Application Library",
+        "label": "app_library",
+        "version": "",
+        "description": "",
+        "url": ""
+      },
+      "license": {
+        "label": "Apache v2",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    }
+  },
+  "software": {
+    "base": {
+      "name": "app_library",
+      "framework": "rails5",
+      "memory": {
+        "required": 256,
+        "recommended": 384
+      },
+      "http_protocol": "http_and_https",
+      "framework_port_override": "",
+      "deployment_type": "web",
+      "web_root_directory": "",
+      "continuous_deployment": false,
+      "install_form_comment": "",
+      "first_run_url": "",
+      "installation_report": ""
+    },
+    "ports": [
+
+    ],
+    "scripts": {
+      "start": {
+        "language": "sh",
+        "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null"
+      },
+      "install": {
+        "language": "sh",
+        "content": ""
+      },
+      "post_install": {
+        "language": "sh",
+        "content": ""
+      },
+      "shutdown": {
+        "language": "sh",
+        "content": ""
+      }
+    },
+    "external_repositories": [
+
+    ],
+    "system_packages": [
+
+    ],
+    "installed_packages": [
+      {
+        "name": "app_library",
+        "source_url": "https://github.com/lachdoug/app_library",
+        "destination": "./",
+        "extraction_command": "git",
+        "path_to_extracted": "app_library"
+      }
+    ],
+    "required_modules": [
+
+    ],
+    "service_configurations": [
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "filesystem/local/filesystem",
+        "variables": {
+          "user": "_Engines_Builder(data_uid)",
+          "group": "_Engines_Builder(data_gid)",
+          "service_name": "_Engines_Builder(engine_name)",
+          "volume_src": "",
+          "engine_path": "persistent",
+          "permissions": "rw"
+        }
+      },
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "database/sql/mysql",
+        "variables": {
+          "db_flavor": "mysql2",
+          "db_password": "_Engines_System(random(10))",
+          "collation": "utf8_general_ci",
+          "full_access": "false",
+          "name": "_Engines_Builder(engine_name)",
+          "database_host": "_Engines_System(mysql_host)",
+          "db_username": "_Engines_Builder(engine_name)",
+          "database_name": "_Engines_Builder(engine_name)"
+        }
+      }
+    ],
+    "environment_variables": [
+
+    ],
+    "template_files": [
+
+    ],
+    "replacement_strings": [
+
+    ],
+    "database_seed": {
+      "language": "text",
+      "content": "",
+      "script": false
+    },
+    "file_write_permissions": [
+      {
+        "path": "./",
+        "recursive": true
+      }
+    ],
+    "persistent_directories": [
+      {
+        "path": "app/public/system"
+      }
+    ],
+    "persistent_files": [
+
+    ],
+    "components": {
+      "sources": [
+
+      ],
+      "path": "",
+      "extract": false
+    },
+    "workers": {
+      "blocking": "",
+      "commands": [
+
+      ]
+    },
+    "rake_tasks": [
+      {
+        "action": "db:migrate",
+        "always_run": true
+      },
+      {
+        "action": "db:seed",
+        "always_run": false
+      },
+      {
+        "action": "assets:precompile",
+        "always_run": true
+      }
+    ],
+    "custom_php_inis": [
+
+    ],
+    "apache_htaccess_files": [
+
+    ],
+    "apache_httpd_configurations": [
+
+    ],
+    "actionators": [
+
+    ],
+    "schedules": [
+
+    ]
+  }
+}
