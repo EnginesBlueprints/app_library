@@ -2,8 +2,8 @@
   "schema": {
     "type": "app_blueprint",
     "version": {
-      "major": 1,
-      "minor": 0
+      "major": 0,
+      "minor": 1
     },
     "origin": "Engines Developer Studio 0.2"
   },
@@ -14,67 +14,46 @@
         "minor": 1,
         "level": "alpha",
         "patch": 0
-      },
-      "timestamp": null
+      }
     },
     "software": {
       "display": {
         "title": "Application Library",
-        "label": "app_library",
-        "version": "",
-        "description": "",
-        "url": ""
+        "label": "app_library"
       },
       "license": {
         "label": "Apache v2",
         "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
-    }
+    },
+    "timestamp": "2018-03-05T08:40:41+11:00"
   },
   "software": {
     "base": {
       "name": "app_library",
       "framework": "rails5",
+      "deployment_type": "web",
+      "http_protocol": "http_and_https",
       "memory": {
         "required": 256,
         "recommended": 384
-      },
-      "http_protocol": "http_and_https",
-      "framework_port_override": "",
-      "deployment_type": "web",
-      "web_root_directory": "",
-      "continuous_deployment": false,
-      "install_form_comment": "",
-      "first_run_url": "",
-      "installation_report": ""
+      }
     },
-    "ports": [
-
-    ],
     "scripts": {
       "start": {
         "language": "sh",
         "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null"
       },
       "install": {
-        "language": "sh",
-        "content": ""
+        "language": "sh"
       },
       "post_install": {
-        "language": "sh",
-        "content": ""
+        "language": "sh"
       },
       "shutdown": {
-        "language": "sh",
-        "content": ""
+        "language": "sh"
       }
     },
-    "external_repositories": [
-
-    ],
-    "system_packages": [
-
-    ],
     "installed_packages": [
       {
         "name": "app_library",
@@ -83,9 +62,6 @@
         "extraction_command": "git",
         "path_to_extracted": "app_library"
       }
-    ],
-    "required_modules": [
-
     ],
     "service_configurations": [
       {
@@ -104,30 +80,17 @@
         "publisher_namespace": "EnginesSystem",
         "type_path": "database/sql/mysql",
         "variables": {
-          "db_flavor": "mysql2",
-          "db_password": "_Engines_System(random(10))",
-          "collation": "utf8_general_ci",
-          "full_access": "false",
-          "name": "_Engines_Builder(engine_name)",
+          "database_name": "_Engines_Builder(engine_name)",
           "database_host": "_Engines_System(mysql_host)",
           "db_username": "_Engines_Builder(engine_name)",
-          "database_name": "_Engines_Builder(engine_name)"
+          "db_password": "_Engines_System(random(10))",
+          "collation": "utf8_general_ci",
+          "full_access": "false"
         }
       }
     ],
-    "environment_variables": [
-
-    ],
-    "template_files": [
-
-    ],
-    "replacement_strings": [
-
-    ],
     "database_seed": {
-      "language": "text",
-      "content": "",
-      "script": false
+      "language": "text"
     },
     "file_write_permissions": [
       {
@@ -140,50 +103,20 @@
         "path": "app/public/system"
       }
     ],
-    "persistent_files": [
-
-    ],
-    "components": {
-      "sources": [
-
-      ],
-      "path": "",
-      "extract": false
-    },
-    "workers": {
-      "blocking": "",
-      "commands": [
-
+    "framework_specific": {
+      "rake_tasks": [
+        {
+          "action": "db:migrate",
+          "always_run": true
+        },
+        {
+          "action": "db:seed"
+        },
+        {
+          "action": "assets:precompile",
+          "always_run": true
+        }
       ]
-    },
-    "rake_tasks": [
-      {
-        "action": "db:migrate",
-        "always_run": true
-      },
-      {
-        "action": "db:seed",
-        "always_run": false
-      },
-      {
-        "action": "assets:precompile",
-        "always_run": true
-      }
-    ],
-    "custom_php_inis": [
-
-    ],
-    "apache_htaccess_files": [
-
-    ],
-    "apache_httpd_configurations": [
-
-    ],
-    "actionators": [
-
-    ],
-    "schedules": [
-
-    ]
+    }
   }
 }
