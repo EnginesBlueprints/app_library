@@ -26,7 +26,7 @@
         "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
     },
-    "timestamp": "2018-03-05T08:40:41+11:00"
+    "timestamp": "2018-03-05T09:07:36+11:00"
   },
   "software": {
     "base": {
@@ -42,7 +42,7 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null"
+        "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null\r\n\r\ncd /home/app\r\nruby start.rb -o 0.0.0.0 -p 8000 &\r\n"
       },
       "install": {
         "language": "sh"
